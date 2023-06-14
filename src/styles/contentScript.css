@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  padding: 0.5em;
+}
+
+ul > li:nth-child(odd) > div > ul {
+  background-color: white;
+}
+
+ul > li:nth-child(even) > div > ul {
+  background-color: #f3f4f6;
+}

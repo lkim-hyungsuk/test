@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "short_name": "ILT",
+  "name": "Inline Translation Configurations",
+  "description": "Use ILT to translate on the fly",
+  "version": "1.3",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "static/js/background.js"
+  },
+  "permissions": ["scripting", "tabs"],
+  "host_permissions": [
+    "https://www.linkedin.com/*",
+    "https://www.linkedin-ei.com/*",
+    "http://localhost:4200/*",
+    "https://pemberly.www.linkedin-ei.com:4443/*",
+    "https://pemberly.www.linkedin.com:4443/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.linkedin.com/*",
+        "https://www.linkedin-ei.com/*",
+        "http://localhost:4200/*",
+        "https://pemberly.www.linkedin-ei.com:4443/*",
+        "https://pemberly.www.linkedin.com:4443/*"
+      ],
+      "js": ["static/js/dataScript.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.linkedin.com/*",
+        "https://www.linkedin-ei.com/*",
+        "http://localhost:4200/*",
+        "https://pemberly.www.linkedin-ei.com:4443/*",
+        "https://pemberly.www.linkedin.com:4443/*"
+      ],
+      "js": ["static/js/contentScript.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icon.png",
+      "24": "icon.png",
+      "32": "icon.png"
+    },
+    "default_title": "ILT Extension",
+    "default_popup": "index.html"
+  },
+
+  "externally_connectable": {
+    "matches": [
+      "https://www.linkedin.com/*",
+      "https://www.linkedin-ei.com/*",
+      "http://localhost:4200/*",
+      "https://pemberly.www.linkedin-ei.com:4443/*",
+      "https://pemberly.www.linkedin.com:4443/*"
+    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["*.png", "*.css", "*.svg"],
+      "matches": [
+        "https://www.linkedin.com/*",
+        "https://www.linkedin-ei.com/*",
+        "http://localhost:4200/*",
+        "https://pemberly.www.linkedin-ei.com:4443/*",
+        "https://pemberly.www.linkedin.com:4443/*"
+      ]
+    }
+  ]
+}
